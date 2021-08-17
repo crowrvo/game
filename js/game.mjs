@@ -1,5 +1,5 @@
 import PlayerComponent from "./player.mjs"
-import GameScene from "./scene.mjs"
+import GameScene from "./mapas/fase1/scene.mjs"
 import {
     checkControl
 } from "./controls.mjs"
@@ -8,11 +8,10 @@ let Player
 let Game = GameScene;
 
 function start() {
-    Player = new PlayerComponent(30, 30, "red", 10, 120, GameScene);
+    Player = new PlayerComponent(30, 30, "blue", 10, 120, GameScene);
     Game.start();
 }
 
-let PlayerSpeed = 3;
 export function update() {
     Game.clear();
     let controls = checkControl[Game.key] ?? false;
