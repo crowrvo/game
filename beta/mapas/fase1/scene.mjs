@@ -23,17 +23,7 @@ const GameScene = {
 }
 
 
-//* {tilesetImage.src} = Conduz a imagem que você vai irá utilizar para adicionar partes delas dentro do cenário;
-var tilesetImage = new Image();
-tilesetImage.src = '../../assets/tileset.png';
-tilesetImage.onload = drawImage;
-//? {canvas} = Adicionando o nosso mapa ao cenário; {ctx} = Transformando em 2D;
-var canvas = document.getElementById('game');
-var ctx = canvas.getContext('2d');
-//? {tamanho} = Definindo a dimensão da imagem, nesse caso 32x32; {imageNumTiles};   
-var tamanho = 32;
-var imageNumTiles = 16;
-var layers = {};
+
 
 //! Partes do cenário; 
 layers['ground'] = ground
