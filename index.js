@@ -1,10 +1,27 @@
-import Player from "./assets/Personagens/Player/index.js";
-import GameManager from "./GameEngine/GameManager.js";
+import PlayerBia from "./assets/Personagens/Bia/index.js";
 import Quarto from "./assets/Cenas/Quarto/index.js";
+const canvas = document.getElementById("game");
+const context = canvas.getContext("2d");
+canvas.width = 832;
+canvas.height = 832;
 
-const game = new GameManager("game");
-const quarto = new Quarto(game.canvas);
-const player = new Player(30, 30, 10, 120, 6, quarto.context);
+let lastTime = 0;
+let entidades = [];
+context.mozImageSmoothingEnabled = false;
+context.webkitImageSmoothingEnabled = false;
+context.msImageSmoothingEnabled = false;
+context.imageSmoothingEnabled = false;
+async function update(timestamp) {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  let deltaTime = 0;
+  deltaTime = timestamp - lastTime;
+  lastTime = timestamp;
+  [...entidades].forEach((x) => x.update(deltaTime));
+  [...entidades].forEach((x) => x.draw(deltaTime));
+  requestAnimationFrame(update);
+}
+update(0);
+const quarto = new Quarto(context);
+const bia = new PlayerBia(16, 33, 256, 390, 4, 3, canvas, context, quarto);
 
-quarto.load(player);
-game.load(quarto);
+entidades.push(quarto, bia);
