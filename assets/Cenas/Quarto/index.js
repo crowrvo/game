@@ -57,34 +57,4 @@ export default class Quarto {
   }
 }
 
-function DrawMap(mapa, ctx) {
-  Object.values(mapa.layers).map((layer) => {
-    layer.forEach((linhas, y) => {
-      linhas.forEach((coluna, x) => {
-        let posLinha =
-          ((coluna / mapa.tileset.TilePerCol) | 0) * mapa.tileset.size;
-        let posColuna =
-          (coluna % mapa.tileset.TilePerRow | 0) * mapa.tileset.size;
-        let posX = x * (mapa.tileset.size * mapa.tileset.scale);
-        let posY = y * (mapa.tileset.size * mapa.tileset.scale);
-        ctx.strokeRect(
-          posX,
-          posY,
-          mapa.tileset.size * mapa.tileset.scale,
-          mapa.tileset.size * mapa.tileset.scale
-        );
-        ctx.drawImage(
-          mapa.TileSetImage,
-          posColuna,
-          posLinha,
-          mapa.tileset.size,
-          mapa.tileset.size,
-          posX,
-          posY,
-          mapa.tileset.size * mapa.tileset.scale,
-          mapa.tileset.size * mapa.tileset.scale
-        );
-      });
-    });
-  });
-}
+
